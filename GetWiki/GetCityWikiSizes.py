@@ -63,16 +63,16 @@ print("Starting text collection and writing into excel...\n")
 ws['h1']="Wiki size" #first unused column in the excel
 
 for k in range(1,len(wikiLinks)+1):
-    wikiCountry=requests.get(wikiLinks[k]) #get the article
-    wikiCountrySoup=bs4.BeautifulSoup(wikiCountry.text,"html.parser")
-    wikiCountryText=wikiCountrySoup.get_text() #get the text from the article
-    wikiCountryTextClean=cleanText(wikiCountryText) #remove rubbish left after using get_text
-    print("Length of "+str(k)+": "+str(len(wikiCountryTextClean)))
-    ws['h'+str(k+1)]=len(wikiCountryTextClean) #data goes to column H
+    wikicity=requests.get(wikiLinks[k]) #get the article
+    wikicitySoup=bs4.BeautifulSoup(wikicity.text,"html.parser")
+    wikicityText=wikicitySoup.get_text() #get the text from the article
+    wikicityTextClean=cleanText(wikicityText) #remove rubbish left after using get_text
+    print("Length of "+str(k)+": "+str(len(wikicityTextClean)))
+    ws['h'+str(k+1)]=len(wikicityTextClean) #data goes to column H
 
-    countryName=wikiLinks[k][30:] #getting the name of the city from the link
-    f=open(str(k)+' '+countryName+'.txt','w') #save the text of the article into a plain text file
-    f.write(wikiCountryTextClean)
+    cityName=wikiLinks[k][30:] #getting the name of the city from the link
+    f=open(str(k)+' '+cityName+'.txt','w') #save the text of the article into a plain text file
+    f.write(wikicityTextClean)
     f.close()
 
 print("Done, closing and saving.\n")
