@@ -11,7 +11,7 @@ def cleanText(sourceText):
     t=re.sub(r"\\n","-", t) #remove \n (new lines) after the conversion
     t=re.sub(r"\\x..","-", t) #remove spec characters after the conversion
     t=re.sub(r"\\'","\'", t) #remove \ characters in front of 's
-    t=re.sub(r"---References.*","",t) #remove text that's not part of the article
+    t=re.sub(r"--References.*","",t) #remove text that's not part of the article
     t=re.sub(r".*t TLD","",t,count=1) #remove noise from the first part
     return t
 
